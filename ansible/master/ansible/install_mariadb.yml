@@ -1,0 +1,6 @@
+---
+- hosts: all
+  tasks:
+    - name: Install mariadb
+      apt:
+        name: mariadb 
