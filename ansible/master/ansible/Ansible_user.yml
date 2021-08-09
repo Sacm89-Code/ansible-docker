@@ -1,0 +1,15 @@
+---
+- hosts: web
+  tasks:
+  - name: Add the user 'app' with a specific uid and a primary group of 'admin'
+    user:
+      name: app
+      generate_ssh_key: no
+      comment: APP user
+      uid: 1040
+      group:  
+  - name: Set authorized key taken from file
+    authorized_key:
+      user: app
+      state: present
+      key: "{{ lookup('file', 'home/app/usuarioApp.ssh.pub') }}"
